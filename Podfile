@@ -7,7 +7,8 @@ target 'AMSandun_COBSCComp201P_018' do
 
   # Pods for AMSandun_COBSCComp201P_018
   pod 'Firebase/Core'
-  pod 'Firebase/Auth'  
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'    
 
   target 'AMSandun_COBSCComp201P_018Tests' do
     inherit! :search_paths

@@ -19,6 +19,15 @@ struct SignUpView: View {
                     Spacer()
 
                     Group {
+                        TextField("Full Name", text: $email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                        TextField("NIC No", text: $email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                        TextField("Vehicle No", text: $email)
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
