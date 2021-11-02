@@ -17,7 +17,11 @@
 		303F4E972729B5700065F944 /* AMSandun_COBSCComp201P_018Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F4E962729B5700065F944 /* AMSandun_COBSCComp201P_018Tests.swift */; };
 		303F4EA12729B5700065F944 /* AMSandun_COBSCComp201P_018UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F4EA02729B5700065F944 /* AMSandun_COBSCComp201P_018UITests.swift */; };
 		303F4EA32729B5700065F944 /* AMSandun_COBSCComp201P_018UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 303F4EA22729B5700065F944 /* AMSandun_COBSCComp201P_018UITestsLaunchTests.swift */; };
+		304AA97A2731851200FC3528 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304AA9792731851200FC3528 /* HomeView.swift */; };
 		308119BA272E4F530029C1DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 308119B9272E4F530029C1DC /* GoogleService-Info.plist */; };
+		30D2549C27312B2B00732049 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2549B27312B2B00732049 /* AuthViewModel.swift */; };
+		30FEFBAC2731864A00AFAD68 /* BookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FEFBAB2731864A00AFAD68 /* BookingView.swift */; };
+		30FEFBAE2731868D00AFAD68 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FEFBAD2731868D00AFAD68 /* SettingView.swift */; };
 		423A0496874A812F83614F8E /* Pods_AMSandun_COBSCComp201P_018Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CACB0483EEF280973BF90A1 /* Pods_AMSandun_COBSCComp201P_018Tests.framework */; };
 		E5DA7B104F12FFB917E376D4 /* Pods_AMSandun_COBSCComp201P_018_AMSandun_COBSCComp201P_018UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E045D99823D6AA4CD768A10F /* Pods_AMSandun_COBSCComp201P_018_AMSandun_COBSCComp201P_018UITests.framework */; };
 		FF5D8D1CF69EC4BA68F973E5 /* Pods_AMSandun_COBSCComp201P_018.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B249BCD2C4F09E9CB5CCAB0E /* Pods_AMSandun_COBSCComp201P_018.framework */; };
@@ -55,7 +59,11 @@
 		303F4E9C2729B5700065F944 /* AMSandun_COBSCComp201P_018UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AMSandun_COBSCComp201P_018UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		303F4EA02729B5700065F944 /* AMSandun_COBSCComp201P_018UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSandun_COBSCComp201P_018UITests.swift; sourceTree = "<group>"; };
 		303F4EA22729B5700065F944 /* AMSandun_COBSCComp201P_018UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AMSandun_COBSCComp201P_018UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		304AA9792731851200FC3528 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		308119B9272E4F530029C1DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		30D2549B27312B2B00732049 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		30FEFBAB2731864A00AFAD68 /* BookingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingView.swift; sourceTree = "<group>"; };
+		30FEFBAD2731868D00AFAD68 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		679A061181B13924EEC62866 /* Pods-AMSandun_COBSCComp201P_018.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMSandun_COBSCComp201P_018.release.xcconfig"; path = "Target Support Files/Pods-AMSandun_COBSCComp201P_018/Pods-AMSandun_COBSCComp201P_018.release.xcconfig"; sourceTree = "<group>"; };
 		6CACB0483EEF280973BF90A1 /* Pods_AMSandun_COBSCComp201P_018Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AMSandun_COBSCComp201P_018Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D6BD68BA4E686B833BA461 /* Pods-AMSandun_COBSCComp201P_018Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AMSandun_COBSCComp201P_018Tests.debug.xcconfig"; path = "Target Support Files/Pods-AMSandun_COBSCComp201P_018Tests/Pods-AMSandun_COBSCComp201P_018Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +120,9 @@
 			children = (
 				30198471272DCA4D00145342 /* SignInView.swift */,
 				30198473272DCA6F00145342 /* SignUpView.swift */,
+				304AA9792731851200FC3528 /* HomeView.swift */,
+				30FEFBAB2731864A00AFAD68 /* BookingView.swift */,
+				30FEFBAD2731868D00AFAD68 /* SettingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +137,7 @@
 		30198470272DC9C400145342 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				30D2549B27312B2B00732049 /* AuthViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -443,8 +455,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30D2549C27312B2B00732049 /* AuthViewModel.swift in Sources */,
 				30198474272DCA6F00145342 /* SignUpView.swift in Sources */,
+				30FEFBAC2731864A00AFAD68 /* BookingView.swift in Sources */,
 				30198472272DCA4D00145342 /* SignInView.swift in Sources */,
+				304AA97A2731851200FC3528 /* HomeView.swift in Sources */,
+				30FEFBAE2731868D00AFAD68 /* SettingView.swift in Sources */,
 				303F4E882729B56E0065F944 /* ContentView.swift in Sources */,
 				303F4E862729B56E0065F944 /* AMSandun_COBSCComp201P_018App.swift in Sources */,
 			);
