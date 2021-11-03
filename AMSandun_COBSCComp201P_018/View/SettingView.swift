@@ -13,6 +13,30 @@ struct SettingView: View {
     var body: some View {
         VStack {
             Text("Setting page")
+            Group {
+                HStack {
+                    Text("Full Name ")
+                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        .disabled(true)
+                }
+                HStack {
+                    Text("NIC No ")
+                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        .disabled(true)
+                }
+                HStack {
+                    Text("Registration No ")
+                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        .disabled(true)
+                }
+                HStack {
+                    Text("Vehicle No ")
+                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
+                        .disabled(true)
+                }
+            }
+            .padding(12)
+            .background(Color.white)
             Button(action: {
                 viewModel.signedOut()
             }, label: {
