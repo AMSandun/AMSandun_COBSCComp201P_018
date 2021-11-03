@@ -46,7 +46,10 @@ struct SignInView: View {
                     })
                 }
                 .padding()
-                
+                Spacer()
+                Text("---------------------- OR ----------------------")
+                    .foregroundColor(Color.black)
+                Spacer()
                 NavigationLink("Create Account", destination: SignUpView())
                     .foregroundColor(Color.blue)
 

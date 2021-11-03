@@ -11,6 +11,7 @@ struct SignUpView: View {
     @State var email = ""
     @State var password = ""
     @EnvironmentObject var viewModel: AppViewModel
+    @StateObject var userModel = UserModel()
 
     var body: some View {
             ScrollView {
@@ -19,19 +20,19 @@ struct SignUpView: View {
                     Spacer()
 
                     Group {
-                        TextField("Full Name", text: $email)
+                        TextField("Full Name", text: $userModel.fullname)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                        TextField("NIC No", text: $email)
+                        TextField("NIC No", text: $userModel.nic)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                        TextField("Vehicle No", text: $email)
+                        TextField("Vehicle No", text: $userModel.vehicleno)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                        TextField("Email", text: $email)
+                        TextField("Email", text: $userModel.email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                        SecureField("Password", text: $password)
+                        SecureField("Password", text: $userModel.password)
                     }
                     .padding(12)
                     .background(Color.white)
@@ -39,7 +40,7 @@ struct SignUpView: View {
                     Spacer()
                     
                     Button (action:{
-                        viewModel.signUp(email: email, password: password)
+                        viewModel.signUp(userModel: userModel)
                         
                     }, label: {
                         HStack {

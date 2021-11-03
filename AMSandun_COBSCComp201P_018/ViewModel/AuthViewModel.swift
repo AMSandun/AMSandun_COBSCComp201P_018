@@ -9,11 +9,13 @@ import Foundation
 import FirebaseAuth
 import SwiftUI
 import FirebaseDatabase
+import FirebaseFirestore
 
 class AppViewModel: ObservableObject {
     
     let auth = Auth.auth()
     let db = Database.database().reference()
+    let databse = Firestore.firestore()
     
     @Published var signedIn = false
     
@@ -33,16 +35,27 @@ class AppViewModel: ObservableObject {
             }
         }
     }
-    func signUp(email: String, password: String) {
-        auth.createUser(withEmail: email, password: password) { [weak self]result,
+    func signUp(userModel: UserModel) {
+        auth.createUser(withEmail: userModel.email, password: userModel.password) { [weak self]result,
             error in
             guard result != nil, error == nil else {
                 return
             }
             
             DispatchQueue.main.async {
-//                let user = Auth.auth().currentUser
-//                self?.db.child("users").child(user.uid).setValue(["email": email])
+                let authUser : [String : Any] = [
+                    "Name": userModel.fullname,
+                    "NIC": userModel.nic,
+                    "RegistrationNo": userModel.regno,
+                    "VehicleNo": userModel.vehicleno,
+                    "Email": userModel.email
+                ]
+                let user = Auth.auth().currentUser
+                var uid : String = ""
+                if let user = user{
+                    uid = user.uid
+                    self?.databse.collection("users").document(uid).setData(authUser)
+                }
                 
                 self?.signedIn = true
             }

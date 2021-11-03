@@ -29,7 +29,7 @@ struct ContentView: View {
                                 }
                             SettingView()
                                 .tabItem{
-                                    Image(systemName: "paperplane")
+                                    Image(systemName: "gear")
                                     Text("Setting")
                                 }
                         }
@@ -47,7 +47,7 @@ struct ContentView: View {
                                 }
                             SignInView()
                                 .tabItem{
-                                    Image(systemName: "pa[erplane")
+                                    Image(systemName: "gear")
                                     Text("Setting")
                                 }
                             
