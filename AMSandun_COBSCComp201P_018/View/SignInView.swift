@@ -18,7 +18,15 @@ struct SignInView: View {
 
                 VStack(spacing: 16) {
                     Spacer()
-
+                    Button {
+                    } label: {
+                        Image("NIBMImage")
+                            .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(width: 200)
+                    }
+                    
+                    Spacer()
                     Group {
                         TextField("Email", text: $email)
                             .keyboardType(.emailAddress)
@@ -28,6 +36,11 @@ struct SignInView: View {
                     .padding(12)
                     .background(Color.white)
                     
+                    Button {
+                        viewModel.forgotPassword(email: email)
+                    } label: {
+                        Text("Forgot Password?")                            
+                    }
                     Spacer()
                     
                     Button(action: {

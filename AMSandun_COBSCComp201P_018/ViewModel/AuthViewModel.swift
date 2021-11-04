@@ -67,4 +67,19 @@ class AppViewModel: ObservableObject {
         
         self.signedIn = false
     }
+    
+    func forgotPassword(email: String) {
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                    DispatchQueue.main.async {
+
+                        //self.email.text = ""
+                        if let error = error {
+                            print(error.localizedDescription)
+                        }
+                        else {
+                            print("We send you an email with instructions on how to reset your password.")
+                        }
+                    }
+                }
+    }
 }

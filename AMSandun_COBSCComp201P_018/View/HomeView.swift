@@ -9,7 +9,26 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        Text("Home page")
+        ScrollView{
+            VStack {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing:15){
+                    ForEach(0..<20, id: \.self){index in
+                        
+                        Color.gray
+                            .frame(width: getWidth(), height: getWidth())
+                            .cornerRadius(15)
+
+                    }
+                }
+                .padding(15)
+            }
+        }
+    }
+    
+    func getWidth()->CGFloat{
+        let width = UIScreen.main.bounds.width - (30 + 30)
+        
+        return width / 4
     }
 }
 
