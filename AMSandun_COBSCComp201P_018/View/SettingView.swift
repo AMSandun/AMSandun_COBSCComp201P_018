@@ -41,7 +41,7 @@ struct SettingView: View {
                 viewModel.signedOut()
             }, label: {
                 Text("Signed Out")
-                    .background(Color.green)
+                    .background(Color.blue)
                     .foregroundColor(Color.black)
                     .padding()
             })

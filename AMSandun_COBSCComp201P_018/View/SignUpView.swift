@@ -18,27 +18,26 @@ struct SignUpView: View {
 
                 VStack(spacing: 16) {
                     Spacer()
-
                     Group {
                         TextField("Full Name", text: $userModel.fullname)
-                            .keyboardType(.emailAddress)
                             .autocapitalization(.none)
+                            .disableAutocorrection(true)
                         TextField("NIC No", text: $userModel.nic)
-                            .keyboardType(.emailAddress)
                             .autocapitalization(.none)
+                            .disableAutocorrection(true)
                         TextField("Vehicle No", text: $userModel.vehicleno)
-                            .keyboardType(.emailAddress)
                             .autocapitalization(.none)
+                            .disableAutocorrection(true)
                         TextField("Email", text: $userModel.email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
+                            .disableAutocorrection(true)
                         SecureField("Password", text: $userModel.password)
                     }
                     .padding(12)
                     .background(Color.white)
                     
                     Spacer()
-                    
                     Button (action:{
                         viewModel.signUp(userModel: userModel)
                         
