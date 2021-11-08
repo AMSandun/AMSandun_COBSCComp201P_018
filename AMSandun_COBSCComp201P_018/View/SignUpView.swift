@@ -15,7 +15,6 @@ struct SignUpView: View {
 
     var body: some View {
             ScrollView {
-
                 VStack(spacing: 16) {
                     Spacer()
                     Group {
@@ -39,6 +38,7 @@ struct SignUpView: View {
                     
                     Spacer()
                     Button (action:{
+                        
                         viewModel.signUp(userModel: userModel)
                         
                     }, label: {

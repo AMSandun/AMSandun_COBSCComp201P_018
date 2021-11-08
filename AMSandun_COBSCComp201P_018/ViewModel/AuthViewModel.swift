@@ -43,17 +43,17 @@ class AppViewModel: ObservableObject {
             }
             
             DispatchQueue.main.async {
-                let authUser : [String : Any] = [
-                    "Name": userModel.fullname,
-                    "NIC": userModel.nic,
-                    "RegistrationNo": userModel.regno,
-                    "VehicleNo": userModel.vehicleno,
-                    "Email": userModel.email
-                ]
                 let user = Auth.auth().currentUser
                 var uid : String = ""
                 if let user = user{
                     uid = user.uid
+                    let authUser : [String : Any] = [
+                        "Name": userModel.fullname,
+                        "NIC": userModel.nic,
+                        "RegistrationNo": uid,
+                        "VehicleNo": userModel.vehicleno,
+                        "Email": userModel.email
+                    ]
                     self?.databse.collection("users").document(uid).setData(authUser)
                 }
                 
