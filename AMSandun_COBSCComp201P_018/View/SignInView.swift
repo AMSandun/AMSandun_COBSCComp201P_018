@@ -44,6 +44,10 @@ struct SignInView: View {
                     Spacer()
                     
                     Button(action: {
+                        
+                        guard !email.isEmpty, !password.isEmpty else {
+                            return
+                        }
                         viewModel.signIn(email: email, password: password)
                         
                     }, label: {

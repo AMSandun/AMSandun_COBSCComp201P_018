@@ -16,3 +16,12 @@ class UserModel : ObservableObject{
     @Published var email = ""
     @Published var password = ""
 }
+
+struct UserDetails : Identifiable{
+ 
+    var id: String
+    var fullname: String
+    var nic: String
+    var regno: String
+    var vehicleno: String
+}

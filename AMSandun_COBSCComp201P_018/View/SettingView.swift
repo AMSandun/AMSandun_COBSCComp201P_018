@@ -10,43 +10,45 @@ import SwiftUI
 struct SettingView: View {
     
     @EnvironmentObject var viewModel: AppViewModel
+    @StateObject var settingsViewModel = SettingViewModel()
+    
     var body: some View {
         VStack {
-            Text("Setting page")
-            Group {
-                HStack {
-                    Text("Full Name ")
-                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                        .disabled(true)
-                }
-                HStack {
-                    Text("NIC No ")
-                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                        .disabled(true)
-                }
-                HStack {
-                    Text("Registration No ")
-                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                        .disabled(true)
-                }
-                HStack {
-                    Text("Vehicle No ")
-                    TextField("", text: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Value@*/.constant("")/*@END_MENU_TOKEN@*/)
-                        .disabled(true)
+            if let user = settingsViewModel.user.first {
+                Form {
+                    HStack{
+                        Text("Full Name :")
+                        Text(user.fullname)
+                    }
+                    padding()
+                    HStack{
+                        Text("NIC No :")
+                        Text(user.nic)
+                    }
+                    padding()
+                    HStack{
+                        Text("Registration No :")
+                        Text(user.regno)
+                    }
+                    padding()
+                    HStack{
+                        Text("Vehicle No :")
+                        Text(user.vehicleno)
+                    }
+                    padding()
+                    Button(action: {
+                        viewModel.signedOut()
+                    }, label: {
+                        Text("Signed Out")
+                            .foregroundColor(Color.red)
+                            .padding()
+                    })
                 }
             }
-            .padding(12)
-            .background(Color.white)
-            Button(action: {
-                viewModel.signedOut()
-            }, label: {
-                Text("Signed Out")
-                    .background(Color.blue)
-                    .foregroundColor(Color.black)
-                    .padding()
-            })
         }
-        
+        .onAppear(){
+            settingsViewModel.getUserDetails()
+        }
     }
 }
 
