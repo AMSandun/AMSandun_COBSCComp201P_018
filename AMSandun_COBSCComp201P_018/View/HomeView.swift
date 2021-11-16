@@ -13,21 +13,32 @@ struct HomeView: View {
     
     var body: some View {
             VStack {
-//                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 15), count: 4), spacing:15){
-//                    ForEach(0..<20, id: \.self){index in
-//
-//                        Color.gray
-//                            .frame(width: getWidth(), height: getWidth())
-//                            .cornerRadius(15)
-//
-//                    }
-//                }
-//                .padding(15)
-
-                List(homeViewModel.users){ user in
+                List(homeViewModel.slots){ slot in
                         VStack{
-                            Text(user.fullname)
-                            Text(user.nic)
+                            if (slot.slotStatus == "1"){
+                                HStack{
+                                    Text("Slot : \(slot.slotid)")
+                                    Spacer()
+                                    Text("Slot Type : \(slot.slotType)")
+                                    Spacer()
+                                    Text(slot.vehicleNo)
+                                }
+                                .padding()
+                                .foregroundColor(Color.black)
+                                .background(Color.orange)
+                            }
+                            else {
+                                HStack{
+                                    Text("Slot : \(slot.slotid)")
+                                    Spacer()
+                                    Text("Slot Type : \(slot.slotType)")
+                                    Spacer()
+                                    Text(slot.vehicleNo)
+                                }
+                                .padding()
+                                .foregroundColor(Color.black)
+                                .background(Color.green)
+                            }
                         }
                     }
             }
@@ -36,12 +47,6 @@ struct HomeView: View {
             }
         .navigationTitle("HOME")
     }
-    
-//    func getWidth()->CGFloat{
-//        let width = UIScreen.main.bounds.width - (30 + 30)
-//
-//        return width / 4
-//    }
 }
 
 struct HomeView_Previews: PreviewProvider {

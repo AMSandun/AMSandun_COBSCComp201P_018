@@ -8,8 +8,62 @@
 import SwiftUI
 
 struct BookingView: View {
+    
+    @StateObject var settingsViewModel = SettingViewModel()
+    @StateObject var bookingViewModel = BookingViewModel()
+    @StateObject var bookingModel = BookingModel()
+    
     var body: some View {
-        Text("Booking page")
+        VStack{
+            if let user = settingsViewModel.user.first {
+                Form {
+                    Section (header: Text("User Detail") .fontWeight(.bold) .foregroundColor(Color.black)){
+                            HStack{
+                                Text("Registration No :")
+                                Text(user.regno)
+                            }
+                            HStack{
+                                Text("Vehicle No :")
+                                Text(user.vehicleno)
+                            }
+                        padding()
+                    }
+                    Section (header: Text("Available Slots") .fontWeight(.bold) .foregroundColor(Color.black)){
+                        VStack{
+                            Picker("Please select a slot",selection: $bookingModel.selectedSlot) {
+                                ForEach(bookingViewModel.availableslots) { slot in
+                                    HStack{
+                                        Text(String(slot.slotid))
+                                        Text(slot.slotype)
+                                    }
+                                    
+                                }
+                            }
+                        }
+                    }
+                    Spacer()
+                    Button (action:{
+                        
+                    }, label: {
+                        HStack {
+                            Spacer()
+                            Text("RESERVE")
+                                .foregroundColor(.black)
+                                .padding(.vertical, 10)
+                                .font(.system(size: 18, weight: .semibold))
+                            Spacer()
+                        }.background(Color.green)
+
+                    })
+                    
+                }
+            }
+        }
+        .onAppear(){
+            settingsViewModel.getUserDetails()
+            bookingViewModel.getAvailableSlots()
+        }
+        
     }
 }
 
