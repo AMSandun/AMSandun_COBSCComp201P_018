@@ -10,8 +10,9 @@ import Foundation
 struct SlotDetails : Identifiable{
  
     var id: String
-    var fullname: String
-    var nic: String
-    var regno: String
-    var vehicleno: String
+    var slotid: Int
+    var slotStatus: String
+    var slotType: String
+    var vehicleNo: String
+    
 }

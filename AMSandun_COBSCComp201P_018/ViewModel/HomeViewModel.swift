@@ -10,22 +10,23 @@ import FirebaseFirestore
 
 class HomeViewModel: ObservableObject {
     var database = Firestore.firestore()
-    @Published var users = [UserDetails]()
+    @Published var slots = [SlotDetails]()
     
     func getSlotDetails(){
-        database.collection("users").addSnapshotListener{ (querySnapshot, error) in
+        database.collection("slots").order(by: "slotId").addSnapshotListener{ (querySnapshot, error) in
             guard let doc = querySnapshot?.documents else {
                 print("Document does not exist")
                 return
             }
-            self.users = doc.map { ( QueryDocumentSnapshot) -> UserDetails in
+            self.slots = doc.map { ( QueryDocumentSnapshot) -> SlotDetails in
                 let data = QueryDocumentSnapshot.data()
                 let id = QueryDocumentSnapshot.documentID
-                let fullname = data["Name"] as? String ?? ""
-                let nic = data["NIC"] as? String ?? ""
-                let vno = data["VehicleNo"] as? String ?? ""
+                let slotid = data["slotId"] as? Int ?? 0
+                let slotStatus = data["slotStatus"] as? String ?? ""
+                let slotType = data["slotType"] as? String ?? ""
+                let vehicleNo = data["vehicleNo"] as? String ?? ""
                 print(data)
-                return UserDetails(id: id, fullname: fullname, nic: nic, regno: id, vehicleno: vno)
+                return SlotDetails(id: id, slotid: slotid, slotStatus: slotStatus, slotType: slotType, vehicleNo: vehicleNo)
                 
             }
         }

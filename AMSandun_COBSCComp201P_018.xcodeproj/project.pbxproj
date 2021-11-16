@@ -21,6 +21,8 @@
 		3066E7A6273557ED006C2FBD /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3066E7A5273557ED006C2FBD /* SettingViewModel.swift */; };
 		3066F52827397249000B1BD0 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3066F52727397249000B1BD0 /* HomeModel.swift */; };
 		3072B31627390BA50016FED8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3072B31527390BA50016FED8 /* HomeViewModel.swift */; };
+		307912472743EDBE00DCC2D8 /* BookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307912462743EDBE00DCC2D8 /* BookingViewModel.swift */; };
+		307912492743F9CE00DCC2D8 /* BookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307912482743F9CE00DCC2D8 /* BookingModel.swift */; };
 		308119BA272E4F530029C1DC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 308119B9272E4F530029C1DC /* GoogleService-Info.plist */; };
 		309E1A002732BF0500202ED7 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 309E19FF2732BF0400202ED7 /* UserModel.swift */; };
 		30D2549C27312B2B00732049 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30D2549B27312B2B00732049 /* AuthViewModel.swift */; };
@@ -67,6 +69,8 @@
 		3066E7A5273557ED006C2FBD /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		3066F52727397249000B1BD0 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		3072B31527390BA50016FED8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		307912462743EDBE00DCC2D8 /* BookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModel.swift; sourceTree = "<group>"; };
+		307912482743F9CE00DCC2D8 /* BookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModel.swift; sourceTree = "<group>"; };
 		308119B9272E4F530029C1DC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		309E19FF2732BF0400202ED7 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		30D2549B27312B2B00732049 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			children = (
 				309E19FF2732BF0400202ED7 /* UserModel.swift */,
 				3066F52727397249000B1BD0 /* HomeModel.swift */,
+				307912482743F9CE00DCC2D8 /* BookingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -150,6 +155,7 @@
 				30D2549B27312B2B00732049 /* AuthViewModel.swift */,
 				3066E7A5273557ED006C2FBD /* SettingViewModel.swift */,
 				3072B31527390BA50016FED8 /* HomeViewModel.swift */,
+				307912462743EDBE00DCC2D8 /* BookingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -471,12 +477,14 @@
 				3072B31627390BA50016FED8 /* HomeViewModel.swift in Sources */,
 				30198474272DCA6F00145342 /* SignUpView.swift in Sources */,
 				30FEFBAC2731864A00AFAD68 /* BookingView.swift in Sources */,
+				307912472743EDBE00DCC2D8 /* BookingViewModel.swift in Sources */,
 				30198472272DCA4D00145342 /* SignInView.swift in Sources */,
 				304AA97A2731851200FC3528 /* HomeView.swift in Sources */,
 				3066E7A6273557ED006C2FBD /* SettingViewModel.swift in Sources */,
 				30FEFBAE2731868D00AFAD68 /* SettingView.swift in Sources */,
 				3066F52827397249000B1BD0 /* HomeModel.swift in Sources */,
 				303F4E882729B56E0065F944 /* ContentView.swift in Sources */,
+				307912492743F9CE00DCC2D8 /* BookingModel.swift in Sources */,
 				309E1A002732BF0500202ED7 /* UserModel.swift in Sources */,
 				303F4E862729B56E0065F944 /* AMSandun_COBSCComp201P_018App.swift in Sources */,
 			);
