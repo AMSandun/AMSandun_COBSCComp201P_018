@@ -16,5 +16,9 @@ struct SlotPickerModel : Identifiable{
 
 class BookingModel : ObservableObject{
     
+    @Published var vehicleNo = ""
+    @Published var registrationNo = ""
     @Published var selectedSlot = ""
+    @Published var bookingTime = ""
+    
 }
