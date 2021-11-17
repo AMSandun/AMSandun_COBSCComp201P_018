@@ -19,7 +19,7 @@ class SettingViewModel : ObservableObject{
         let uid = auth.currentUser?.uid
         database.collection("users").whereField("RegistrationNo", isEqualTo: uid ?? "").addSnapshotListener{ (querySnapshot, error) in
             guard let doc = querySnapshot?.documents else {
-                print("Document does not exist")
+                print("Users does not exist")
                 return
             }
             self.user = doc.map { ( QueryDocumentSnapshot) -> UserDetails in
