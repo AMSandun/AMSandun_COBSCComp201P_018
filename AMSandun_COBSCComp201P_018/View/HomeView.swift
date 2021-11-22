@@ -12,6 +12,7 @@ struct HomeView: View {
     @ObservedObject var homeViewModel = HomeViewModel()
     
     var body: some View {
+        NavigationView{
             VStack {
                 List(homeViewModel.slots){ slot in
                         VStack{
@@ -44,11 +45,15 @@ struct HomeView: View {
                             }
                         }
                     }
+                .listStyle(SidebarListStyle())
             }
             .onAppear(){
                 self.homeViewModel.getSlotDetails()
             }
-        .navigationTitle("HOME")
+            .navigationTitle("HOME")
+            .background(Color(.init(white: 0, alpha: 0.20))
+                            .ignoresSafeArea())
+        }
     }
 }
 
