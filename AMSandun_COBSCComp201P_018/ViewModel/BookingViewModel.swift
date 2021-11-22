@@ -32,12 +32,11 @@ class BookingViewModel: ObservableObject {
     }
     
     func createReserve(bookingModel: BookingModel) {
-        
         let ReserveBooking : [String : Any] = [
             "VehicleNo": bookingModel.vehicleNo,
             "RegistrationNo": bookingModel.registrationNo,
             "SelectedSlot": bookingModel.selectedSlot,
-            "Date": bookingModel.bookingTime,
+            "BookingDate": FieldValue.serverTimestamp()
         ]
         self.database.collection("reservations").addDocument(data: ReserveBooking){ err in
             if let error = err{

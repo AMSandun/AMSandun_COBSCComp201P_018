@@ -14,6 +14,7 @@ struct SignUpView: View {
     @StateObject var userModel = UserModel()
 
     var body: some View {
+        NavigationView{
             ScrollView {
                 VStack(spacing: 16) {
                     Spacer()
@@ -60,9 +61,12 @@ struct SignUpView: View {
                 .padding()
 
             }
-            .navigationTitle("SIGN UP")
             .background(Color(.init(white: 0, alpha: 0.20))
                             .ignoresSafeArea())
+        }
+        .navigationTitle("SIGN UP")
+        
+            
     }
 }
 

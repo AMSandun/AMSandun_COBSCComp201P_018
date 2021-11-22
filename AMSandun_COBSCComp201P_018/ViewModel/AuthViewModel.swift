@@ -21,39 +21,41 @@ class AppViewModel: ObservableObject {
     @Published var signInErrorMessage = ""
     @Published var signUpErrorMessage = ""
     @Published var forgotPassword = ""
+    private let authService : AuthServiceProtocol
+        
+    init(authSerive: AuthServiceProtocol = AuthService()){
+        self.authService = authSerive
+    }
     
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
     
     
-    func signIn(email: String, password: String) {
+    func signIn(credentialModel: CredentialModel) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self.signInErrorMessage = ""
                 }
-        if(email == ""){
+        if(credentialModel.email == ""){
             self.signInErrorMessage = "Email is required!"
-        } else if(password == ""){
+        } else if(credentialModel.password == ""){
             self.signInErrorMessage = "Password is required!"
         }
         else{
-            auth.signIn(withEmail: email, password: password) { [weak self]result,
-                error in
-                guard result != nil, error == nil else {
-                    self?.signInErrorMessage = error?.localizedDescription ?? ""
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    self?.signedIn = true
-                }
-            }
-            
+            authService.SignIn(email: credentialModel.email, password: credentialModel.password ){ result in
+                        switch result{
+                        case .success:
+                            DispatchQueue.main.async {
+                                self.signedIn = true
+                            }
+                        case let .failure(error):
+                            self.signInErrorMessage = error.localizedDescription
+                        }
+                    }
         }
-        
-        
     }
+    
     func signUp(userModel: UserModel) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self.signUpErrorMessage = ""

@@ -13,7 +13,6 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: AppViewModel
 
     var body: some View {
-        NavigationView {
                 VStack{
                     if viewModel.signedIn{
                         TabView() {
@@ -53,7 +52,6 @@ struct ContentView: View {
                         }
                     }
                 }
-        }
         .onAppear{
             viewModel.signedIn = viewModel.isSignedIn
         }

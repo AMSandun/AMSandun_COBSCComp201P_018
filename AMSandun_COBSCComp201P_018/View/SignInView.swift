@@ -12,8 +12,10 @@ struct SignInView: View {
     @State var email = ""
     @State var password = ""
     @EnvironmentObject var viewModel: AppViewModel
+    @StateObject var credentialModel = CredentialModel()
 
     var body: some View {
+        NavigationView{
             ScrollView {
 
                 VStack(spacing: 16) {
@@ -28,10 +30,10 @@ struct SignInView: View {
                     
                     Spacer()
                     Group {
-                        TextField("Email", text: $email)
+                        TextField("Email", text: $credentialModel.email)
                             .keyboardType(.emailAddress)
                             .autocapitalization(.none)
-                        SecureField("Password", text: $password)
+                        SecureField("Password", text: $credentialModel.password)
                     }
                     .padding(12)
                     .background(Color.white)
@@ -41,14 +43,14 @@ struct SignInView: View {
                     Button {
                         viewModel.forgotPassword(email: email)
                     } label: {
-                        Text("Forgot Password?")                            
+                        Text("Forgot Password?")
                     }
                     Text(viewModel.signInErrorMessage)
                         .foregroundColor(Color.red)
                         .fontWeight(.bold)
                     
                     Button(action: {
-                        viewModel.signIn(email: email, password: password)
+                        viewModel.signIn(credentialModel: credentialModel)
                         
                     }, label: {
                         HStack {
@@ -75,6 +77,9 @@ struct SignInView: View {
             .navigationTitle("SIGN IN")
             .background(Color(.init(white: 0, alpha: 0.20))
                             .ignoresSafeArea())
+            
+        }
+            
     }
 }
 

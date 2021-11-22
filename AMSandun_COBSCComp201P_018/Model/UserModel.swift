@@ -16,6 +16,11 @@ class UserModel : ObservableObject{
     @Published var email = ""
     @Published var password = ""
 }
+class CredentialModel : ObservableObject{
+    
+    @Published var email = ""
+    @Published var password = ""
+}
 
 struct UserDetails : Identifiable{
  
