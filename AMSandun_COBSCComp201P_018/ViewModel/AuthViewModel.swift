@@ -18,48 +18,89 @@ class AppViewModel: ObservableObject {
     let databse = Firestore.firestore()
     
     @Published var signedIn = false
+    @Published var signInErrorMessage = ""
+    @Published var signUpErrorMessage = ""
+    @Published var forgotPassword = ""
     
     var isSignedIn: Bool {
         return auth.currentUser != nil
     }
     
+    
     func signIn(email: String, password: String) {
-        auth.signIn(withEmail: email, password: password) { [weak self]result,
-            error in
-            guard result != nil, error == nil else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self?.signedIn = true
-            }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.signInErrorMessage = ""
+                }
+        if(email == ""){
+            self.signInErrorMessage = "Email is required!"
+        } else if(password == ""){
+            self.signInErrorMessage = "Password is required!"
         }
-    }
-    func signUp(userModel: UserModel) {
-        auth.createUser(withEmail: userModel.email, password: userModel.password) { [weak self]result,
-            error in
-            guard result != nil, error == nil else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                let user = Auth.auth().currentUser
-                var uid : String = ""
-                if let user = user{
-                    uid = user.uid
-                    let authUser : [String : Any] = [
-                        "Name": userModel.fullname,
-                        "NIC": userModel.nic,
-                        "RegistrationNo": uid,
-                        "VehicleNo": userModel.vehicleno,
-                        "Email": userModel.email
-                    ]
-                    self?.databse.collection("users").document(uid).setData(authUser)
+        else{
+            auth.signIn(withEmail: email, password: password) { [weak self]result,
+                error in
+                guard result != nil, error == nil else {
+                    self?.signInErrorMessage = error?.localizedDescription ?? ""
+                    return
                 }
                 
-                self?.signedIn = true
+                DispatchQueue.main.async {
+                    self?.signedIn = true
+                }
             }
+            
         }
+        
+        
+    }
+    func signUp(userModel: UserModel) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    self.signUpErrorMessage = ""
+                }
+        if(userModel.fullname == ""){
+            self.signUpErrorMessage = "Name is required!"
+        } else if(userModel.nic == ""){
+            self.signUpErrorMessage = "NIC is required!"
+        } else if(userModel.vehicleno == "") {
+            self.signUpErrorMessage = "Vehicle Number is required!"
+        } else if(userModel.email == ""){
+            self.signUpErrorMessage = "Email is required!"
+        } else if(userModel.password == ""){
+            self.signUpErrorMessage = "Password is required!"
+        } else if(userModel.password.count < 6){
+            self.signUpErrorMessage = "Required strong password!"
+        }
+        else{
+            
+            auth.createUser(withEmail: userModel.email, password: userModel.password) { [weak self]result,
+                error in
+                guard result != nil, error == nil else {
+                    self?.signUpErrorMessage = error?.localizedDescription ?? ""
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    let user = Auth.auth().currentUser
+                    var uid : String = ""
+                    if let user = user{
+                        uid = user.uid
+                        let authUser : [String : Any] = [
+                            "Name": userModel.fullname,
+                            "NIC": userModel.nic,
+                            "RegistrationNo": uid,
+                            "VehicleNo": userModel.vehicleno,
+                            "Email": userModel.email
+                        ]
+                        self?.databse.collection("users").document(uid).setData(authUser)
+                    }
+                    
+                    self?.signedIn = true
+                }
+            }
+            
+        }
+        
     }
     
     func signedOut() {
@@ -69,17 +110,27 @@ class AppViewModel: ObservableObject {
     }
     
     func forgotPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-                    DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    self.forgotPassword = ""
+                }
+        if (email == "") {
+            self.forgotPassword = "Email is required!"
+        }
+        else{
+            Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+                        DispatchQueue.main.async {
 
-                        //self.email.text = ""
-                        if let error = error {
-                            print(error.localizedDescription)
-                        }
-                        else {
-                            print("We send you an email with instructions on how to reset your password.")
+                            if let error = error {
+                                print(error.localizedDescription)
+                                self.forgotPassword = error.localizedDescription
+                            }
+                            else {
+                                self.forgotPassword = "We send you an email with instructions on how to reset your password."
+                            }
                         }
                     }
-                }
+            
+        }
+        
     }
 }
