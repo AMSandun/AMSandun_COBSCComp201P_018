@@ -35,19 +35,19 @@ struct SignInView: View {
                     }
                     .padding(12)
                     .background(Color.white)
-                    
+                    Text(viewModel.forgotPassword)
+                        .foregroundColor(Color.red)
+                        .fontWeight(.bold)
                     Button {
                         viewModel.forgotPassword(email: email)
                     } label: {
                         Text("Forgot Password?")                            
                     }
-                    Spacer()
+                    Text(viewModel.signInErrorMessage)
+                        .foregroundColor(Color.red)
+                        .fontWeight(.bold)
                     
                     Button(action: {
-                        
-                        guard !email.isEmpty, !password.isEmpty else {
-                            return
-                        }
                         viewModel.signIn(email: email, password: password)
                         
                     }, label: {
@@ -59,6 +59,7 @@ struct SignInView: View {
                                 .font(.system(size: 18, weight: .semibold))
                             Spacer()
                         }.background(Color.green)
+                            .cornerRadius(15)
 
                     })
                 }

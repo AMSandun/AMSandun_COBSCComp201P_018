@@ -26,6 +26,7 @@ struct HomeView: View {
                                 .padding()
                                 .foregroundColor(Color.black)
                                 .background(Color.orange)
+                                .clipShape(Capsule())
                             }
                             else {
                                 HStack{
@@ -33,11 +34,13 @@ struct HomeView: View {
                                     Spacer()
                                     Text("Slot Type : \(slot.slotType)")
                                     Spacer()
-                                    Text(slot.vehicleNo)
+                                    Text("Available")
+                                        .fontWeight(.bold)
                                 }
                                 .padding()
                                 .foregroundColor(Color.black)
                                 .background(Color.green)
+                                .clipShape(Capsule())
                             }
                         }
                     }

@@ -61,6 +61,7 @@ struct BookingView: View {
                                       secondaryButton: .cancel(){
                                 })
                             }
+                            .cornerRadius(15)
 
                     })
                 }

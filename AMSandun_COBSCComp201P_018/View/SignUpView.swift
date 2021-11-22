@@ -36,6 +36,10 @@ struct SignUpView: View {
                     .padding(12)
                     .background(Color.white)
                     
+                    Text(viewModel.signUpErrorMessage)
+                        .foregroundColor(Color.red)
+                        .fontWeight(.bold)
+                    
                     Spacer()
                     Button (action:{
                         
@@ -50,7 +54,7 @@ struct SignUpView: View {
                                 .font(.system(size: 18, weight: .semibold))
                             Spacer()
                         }.background(Color.green)
-
+                            .cornerRadius(15)
                     })
                 }
                 .padding()

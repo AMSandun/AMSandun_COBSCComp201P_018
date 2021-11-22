@@ -56,6 +56,7 @@ struct SettingView: View {
                                       secondaryButton: .cancel(){
                                 })
                             }
+                            .cornerRadius(15)
                     })
                     
                 }
