@@ -11,6 +11,7 @@ import FirebaseFirestore
 class BookingViewModel: ObservableObject {
     var database = Firestore.firestore()
     @Published var availableslots = [SlotPickerModel]()
+    @Published var reservationErrorMessage = ""
     
     func getAvailableSlots(){
         database.collection("slots").order(by: "slotId").whereField("slotStatus", isEqualTo: "2").addSnapshotListener{ (querySnapshot, error) in
@@ -32,19 +33,29 @@ class BookingViewModel: ObservableObject {
     }
     
     func createReserve(bookingModel: BookingModel, Vno: String, Regno: String) {
-        let ReserveBooking : [String : Any] = [
-            "VehicleNo": Vno,
-            "RegistrationNo": Regno,
-            "SelectedSlot": bookingModel.selectedSlot,
-            "BookingDate": FieldValue.serverTimestamp()
-        ]
-        self.database.collection("reservations").addDocument(data: ReserveBooking){ err in
-            if let error = err{
-                print("Error", error.localizedDescription)
-            } else {
-                self.database.collection("slots").document(bookingModel.selectedSlot).updateData(["slotStatus" : "1" , "vehicleNo": Vno]){ err in
-                    if let err = err {
-                        print("Error", err)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 13) {
+                    self.reservationErrorMessage = ""
+                }
+        if(bookingModel.selectedSlot ==  "" ){
+            self.reservationErrorMessage = "Please select a parking slot"
+        }
+        else{
+            let ReserveBooking : [String : Any] = [
+                "VehicleNo": Vno,
+                "RegistrationNo": Regno,
+                "SelectedSlot": bookingModel.selectedSlot,
+                "BookingDate": FieldValue.serverTimestamp()
+            ]
+            self.database.collection("reservations").addDocument(data: ReserveBooking){ err in
+                if let error = err{
+                    print("Error", error.localizedDescription)
+                    self.reservationErrorMessage = error.localizedDescription
+                } else {
+                    self.database.collection("slots").document(bookingModel.selectedSlot).updateData(["slotStatus" : "1" , "vehicleNo": Vno]){ err in
+                        if let err = err {
+                            print("Error", err)
+                            self.reservationErrorMessage = err.localizedDescription
+                        }
                     }
                 }
             }

@@ -37,14 +37,20 @@ struct SignInView: View {
                     }
                     .padding(12)
                     .background(Color.white)
+                    
+                    HStack{
+                        Spacer()
+                        Spacer()
+                        Button {
+                            viewModel.forgotPassword(email: email)
+                        } label: {
+                            Text("Forgot Password?")
+                        }
+                    }
                     Text(viewModel.forgotPassword)
                         .foregroundColor(Color.red)
                         .fontWeight(.bold)
-                    Button {
-                        viewModel.forgotPassword(email: email)
-                    } label: {
-                        Text("Forgot Password?")
-                    }
+                    
                     Text(viewModel.signInErrorMessage)
                         .foregroundColor(Color.red)
                         .fontWeight(.bold)
@@ -72,6 +78,9 @@ struct SignInView: View {
                 Spacer()
                 NavigationLink("Create Account", destination: SignUpView())
                     .foregroundColor(Color.blue)
+                Spacer()
+                NavigationLink("Terms and Conditions", destination: SignUpView())
+                    .foregroundColor(Color.black)
 
             }
             .navigationTitle("SIGN IN")

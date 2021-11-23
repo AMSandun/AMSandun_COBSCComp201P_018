@@ -22,7 +22,10 @@ struct HomeView: View {
                                     Spacer()
                                     Text("Slot Type : \(slot.slotType)")
                                     Spacer()
-                                    Text(slot.vehicleNo)
+                                    VStack{
+                                        Text(slot.vehicleNo)
+                                    }
+                                    
                                 }
                                 .padding()
                                 .foregroundColor(Color.black)
