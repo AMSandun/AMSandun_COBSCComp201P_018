@@ -21,10 +21,10 @@ class AppViewModel: ObservableObject {
     @Published var signInErrorMessage = ""
     @Published var signUpErrorMessage = ""
     @Published var forgotPassword = ""
-    private let authService : AuthServiceProtocol
+    private let authenticationService : AuthServiceProtocol
         
-    init(authSerive: AuthServiceProtocol = AuthService()){
-        self.authService = authSerive
+    init(authService: AuthServiceProtocol = AuthService()){
+        self.authenticationService = authService
     }
     
     var isSignedIn: Bool {
@@ -43,7 +43,7 @@ class AppViewModel: ObservableObject {
             self.signInErrorMessage = "Password is required!"
         }
         else{
-            authService.SignIn(email: credentialModel.email, password: credentialModel.password ){ result in
+            authenticationService.SignIn(email: credentialModel.email, password: credentialModel.password ){ result in
                         switch result{
                         case .success:
                             DispatchQueue.main.async {
