@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CodeScanner
 
 struct BookingView: View {
     
@@ -13,6 +14,18 @@ struct BookingView: View {
     @StateObject var bookingViewModel = BookingViewModel()
     @StateObject var bookingModel = BookingModel()
     @State private var showingAlert = false
+    @State var isPerentingScanner = false
+        
+    var scannerSheet: some View{
+        CodeScannerView(codeTypes: [.qr], completion: {
+            result in
+            if case let .success(slotId) = result{
+                self.isPerentingScanner = false
+                self.bookingModel.selectedSlot = slotId
+                bookingViewModel.createReserve(bookingModel: bookingModel, Vno: settingsViewModel.user.first?.vehicleno ?? "" , Regno: settingsViewModel.user.first?.regno ?? "")
+            }
+        })
+    }
     
     var body: some View {
         NavigationView{
@@ -53,7 +66,14 @@ struct BookingView: View {
                                 }
                             }
                         }
-//                        Spacer()
+                        HStack{
+                            Spacer()
+                            Text(bookingViewModel.reservationErrorMessage)
+                                .foregroundColor(Color.red)
+                                .fontWeight(.bold)
+                            Spacer()
+                        }
+                        
                         Button (action:{
                             showingAlert = true
                         }, label: {
@@ -75,6 +95,18 @@ struct BookingView: View {
                                 .cornerRadius(15)
 
                         })
+                        Spacer()
+                        HStack{
+                            Spacer()
+                            Button(action: {self.isPerentingScanner = true}, label: {
+                                Text("Scan the QR code")
+                                    .foregroundColor(Color.blue)
+                            })
+                                .sheet(isPresented: $isPerentingScanner){
+                                    self.scannerSheet
+                            }
+                            Spacer()
+                        }
                     }
                 }
             }
