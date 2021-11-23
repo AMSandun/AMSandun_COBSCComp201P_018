@@ -51,7 +51,6 @@ struct BookingView: View {
                                         }
                                     }
                                 }
-                                .pickerStyle(WheelPickerStyle())
                             }
                         }
 //                        Spacer()
@@ -68,7 +67,7 @@ struct BookingView: View {
                             }.background(Color.green)
                                 .alert(isPresented: $showingAlert) {
                                     Alert(title: Text("Do you want to reserve a slot?"), message: Text("NIBM Parking"), primaryButton: .destructive(Text("YES")){
-                                        bookingViewModel.createReserve(bookingModel: bookingModel)
+                                        bookingViewModel.createReserve(bookingModel: bookingModel, Vno: settingsViewModel.user.first?.vehicleno ?? "" , Regno: settingsViewModel.user.first?.regno ?? "")
                                     },
                                           secondaryButton: .cancel(){
                                     })

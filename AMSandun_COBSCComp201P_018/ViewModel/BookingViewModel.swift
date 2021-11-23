@@ -31,10 +31,10 @@ class BookingViewModel: ObservableObject {
         
     }
     
-    func createReserve(bookingModel: BookingModel) {
+    func createReserve(bookingModel: BookingModel, Vno: String, Regno: String) {
         let ReserveBooking : [String : Any] = [
-            "VehicleNo": bookingModel.vehicleNo,
-            "RegistrationNo": bookingModel.registrationNo,
+            "VehicleNo": Vno,
+            "RegistrationNo": Regno,
             "SelectedSlot": bookingModel.selectedSlot,
             "BookingDate": FieldValue.serverTimestamp()
         ]
@@ -42,7 +42,7 @@ class BookingViewModel: ObservableObject {
             if let error = err{
                 print("Error", error.localizedDescription)
             } else {
-                self.database.collection("slots").document(bookingModel.selectedSlot).updateData(["slotStatus" : "1" , "vehicleNo": "CAI0000"]){ err in
+                self.database.collection("slots").document(bookingModel.selectedSlot).updateData(["slotStatus" : "1" , "vehicleNo": Vno]){ err in
                     if let err = err {
                         print("Error", err)
                     }

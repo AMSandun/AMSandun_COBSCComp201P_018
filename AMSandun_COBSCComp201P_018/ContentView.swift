@@ -20,16 +20,19 @@ struct ContentView: View {
                                 .tabItem{
                                     Image(systemName: "homekit")
                                     Text("Home")
+                                        .foregroundColor(Color.black)
                                 }
                             BookingView()
                                 .tabItem{
                                     Image(systemName: "lifepreserver.fill")
                                     Text("Booking")
+                                        .foregroundColor(Color.black)
                                 }
                             SettingView()
                                 .tabItem{
                                     Image(systemName: "gear")
                                     Text("Setting")
+                                        .foregroundColor(Color.black)
                                 }
                         }
                     } else {
@@ -38,16 +41,19 @@ struct ContentView: View {
                                 .tabItem{
                                     Image(systemName: "homekit")
                                     Text("Home")
+                                        .foregroundColor(Color.black)
                                 }
                             SignInView()
                                 .tabItem{
                                     Image(systemName: "lifepreserver.fill")
                                     Text("Booking")
+                                        .foregroundColor(Color.black)
                                 }
                             SignInView()
                                 .tabItem{
                                     Image(systemName: "gear")
                                     Text("Setting")
+                                        .foregroundColor(Color.black)
                                 }
                         }
                     }

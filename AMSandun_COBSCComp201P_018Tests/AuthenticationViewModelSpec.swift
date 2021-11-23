@@ -15,7 +15,7 @@ class AuthenticationViewModelSpec: XCTestCase {
         
         override func setUp() {
             mockAuthService = MockAuthenticationService()
-            viewModel = .init(authSerive: mockAuthService)
+            viewModel = .init(authService: mockAuthService)
         }
         
         func testSignInWithCorrectDetails(){
