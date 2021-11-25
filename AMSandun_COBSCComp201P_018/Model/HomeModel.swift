@@ -14,5 +14,5 @@ struct SlotDetails : Identifiable{
     var slotStatus: String
     var slotType: String
     var vehicleNo: String
-    
+    var cancelTime: String
 }
