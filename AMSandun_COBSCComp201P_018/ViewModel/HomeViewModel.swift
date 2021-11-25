@@ -25,8 +25,9 @@ class HomeViewModel: ObservableObject {
                 let slotStatus = data["slotStatus"] as? String ?? ""
                 let slotType = data["slotType"] as? String ?? ""
                 let vehicleNo = data["vehicleNo"] as? String ?? ""
+                let cancelTime = data["bookingTime"] as? String ?? ""
                 print(data)
-                return SlotDetails(id: id, slotid: slotid, slotStatus: slotStatus, slotType: slotType, vehicleNo: vehicleNo)
+                return SlotDetails(id: id, slotid: slotid, slotStatus: slotStatus, slotType: slotType, vehicleNo: vehicleNo , cancelTime: cancelTime)
                 
             }
         }

@@ -24,6 +24,7 @@ struct HomeView: View {
                                     Spacer()
                                     VStack{
                                         Text(slot.vehicleNo)
+                                        Text("Time : \(slot.cancelTime)")
                                     }
                                     
                                 }
